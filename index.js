@@ -27,10 +27,10 @@ bot.on('message', function(event) {
             const userId = profile.userId;
 	    
             //使用者傳來的學號
-            const no = event.message.text;
+            const courseno = event.message.text;
           
             //呼叫API取得學生資料
-            course.fetchCourse(no).then(data => {  
+            course.fetchCourse(courseno).then(data => {  
                 if (data == -1){
                     event.reply('找不到資料');
                 }else if(data == -9){                    
