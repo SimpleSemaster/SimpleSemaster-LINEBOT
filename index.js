@@ -37,11 +37,7 @@ bot.on('message', function(event) {
                     event.reply('執行錯誤');
                 }else{
                     event.reply([
-                        {'type':'text', 'text':data.courseno+data.coursename+data.teacherno+data.whichday+data.coursetime},
-                        {'type':'text', 'text':data.coursename},
-                        {'type':'text', 'text':data.teacherno},
-                        {'type':'text', 'text':data.whichday},
-                        {'type':'text', 'text':data.coursetime}]
+                        {'type':'text', 'text':data.courseno+" "+data.coursename+" "+data.teacherno+" "+data.whichday+" "+data.coursetime},]
                     );  
                 }  
             })  
