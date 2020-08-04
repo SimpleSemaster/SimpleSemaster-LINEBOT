@@ -28,19 +28,21 @@ bot.on('message', function(event) {
 	    
             //使用者傳來的學號
             const courseno = event.message.text;
-          
+            
+            if (message.getText() == "查詢"+courseno) {
             //呼叫API取得學生資料
-            course.fetchCourse(courseno).then(data => {  
-                if (data == -1){
-                    event.reply('找不到資料');
-                }else if(data == -9){                    
-                    event.reply('執行錯誤');
-                }else{
-                    event.reply([
-                        {'type':'text', 'text':data.courseno+" "+data.coursename+" "+data.teacherno+" "+data.whichday+" "+data.coursetime},]
-                    );  
-                }  
-            })  
+                course.fetchCourse(courseno).then(data => {  
+                    if (data == -1){
+                        event.reply('找不到資料');
+                    }else if(data == -9){                    
+                        event.reply('執行錯誤');
+                    }else{
+                        event.reply([
+                            {'type':'text', 'text':data.courseno+" "+data.coursename+" "+data.teacherno+" "+data.whichday+" "+data.coursetime},]
+                        );  
+                    }  
+                })
+            }      
         }
     );
 });
