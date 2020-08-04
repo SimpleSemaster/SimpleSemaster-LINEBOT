@@ -27,10 +27,9 @@ bot.on('message', function(event) {
             const userId = profile.userId;
 	    
             //使用者傳來的學號
-            //const courseno = event.message.text;
-            const courseno;
-            
-            if (event.message.text == "查詢"+courseno) {
+            const courseno = event.message.text;
+        
+            if (event.message.text == "查詢") {
             //呼叫API取得學生資料
                 course.fetchCourse(courseno).then(data => {  
                     if (data == -1){
