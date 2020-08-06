@@ -26,11 +26,12 @@ bot.on('message', function(event) {
             const userName = profile.displayName;
             const userId = profile.userId;
 	    
-            //使用者傳來的學號
-            const courseno = event.message.text;
+            
         
             if (event.message.text.includes("查詢")) {
-            //呼叫API取得學生資料
+                //使用者傳來的學號
+                const courseno = parseInt(event.message.text);
+                //呼叫API取得學生資料
                 course.fetchCourse(courseno).then(data => {  
                     if (data == -1){
                         event.reply('找不到資料');
