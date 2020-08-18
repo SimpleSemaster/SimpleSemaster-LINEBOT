@@ -39,7 +39,7 @@ bot.on('message', function(event) {
                         event.reply('執行錯誤');
                     }else{
                         event.reply([
-                            {'type':'text', 'text':data.coursename+"%0D%0A指導老師："+data.teacherno+"%0D%0A星期"+data.whichday+"%0D%0A從第"+data.courseStartTime+"節課到第"+data.courseEndTime+"節課"},]
+                            {'type':'text', 'text':data.coursename+" %0D%0A 指導老師："+data.teacherno+" %0D%0A 星期"+data.whichday+" %0D%0A 從第"+data.courseStartTime+"節課到第"+data.courseEndTime+"節課"},]
                         );  
                     }  
                 })
