@@ -6,12 +6,12 @@ const query = require('./asyncDB');
 //------------------------------------------
 // 由學號查詢學生資料
 //------------------------------------------
-var fetchCourse = async function(courseno){
+var fetchCourse = async function(coursename){
     //存放結果
     let result;  
 
     //讀取資料庫
-    await query('select * from course where courseno = $1', [courseno])
+    await query('select * from course where coursename = $1', [coursename])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows[0];  //學生資料(物件)

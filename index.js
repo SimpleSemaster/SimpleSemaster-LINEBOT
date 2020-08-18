@@ -30,16 +30,16 @@ bot.on('message', function(event) {
         
             if (event.message.text.includes("查詢")) {
                 //使用者傳來的學號
-                const courseno = event.message.text.substr(-5,5);
+                const coursename = event.message.text.substr(-2,2);
                 //呼叫API取得學生資料
-                course.fetchCourse(courseno).then(data => {  
+                course.fetchCourse(coursename).then(data => {  
                     if (data == -1){
                         event.reply('找不到資料');
                     }else if(data == -9){                    
                         event.reply('執行錯誤');
                     }else{
                         event.reply([
-                            {'type':'text', 'text':data.courseno+" "+data.coursename+" "+data.teacherno+" "+data.whichday+" "+data.courseStartTime+" "+data.courseEndTime},]
+                            {'type':'text', 'text':data.coursename+"<br>指導老師："+data.teacherno+"<br>星期"+data.whichday+"<br>從第："+data.courseStartTime+"節課到第"+data.courseEndTime+"節課"},]
                         );  
                     }  
                 })
