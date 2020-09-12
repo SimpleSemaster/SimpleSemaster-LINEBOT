@@ -28,23 +28,6 @@ bot.on('message', function(event) {
             const userId = profile.userId;
 	    
             
-        
-            if (event.message.text.includes("查詢")) {
-                //使用者傳來的學號
-                const coursename = event.message.text.substr(2);
-                //呼叫API取得學生資料
-                course.fetchCourse(coursename).then(data => {  
-                    if (data == -1){
-                        event.reply('找不到資料');
-                    }else if(data == -9){                    
-                        event.reply('執行錯誤');
-                    }else{
-                        event.reply([
-                            {'type':'text', 'text':data.coursename+"\n指導老師："+data.teachername+"\n星期"+data.whichday+"\n從第"+data.courseStartTime+"節課到第"+data.courseEndTime+"節課"},]
-                        );  
-                    }  
-                })
-            }
             if (event.message.text.includes("查詢")) {
                 //使用者傳來的學號
                 const teachername = event.message.text.substr(2);
@@ -61,7 +44,22 @@ bot.on('message', function(event) {
                     }  
                 })
             }
-
+            if (event.message.text.includes("查詢")) {
+                //使用者傳來的學號
+                const coursename = event.message.text.substr(2);
+                //呼叫API取得學生資料
+                course.fetchCourse(coursename).then(data => {  
+                    if (data == -1){
+                        event.reply('找不到資料');
+                    }else if(data == -9){                    
+                        event.reply('執行錯誤');
+                    }else{
+                        event.reply([
+                            {'type':'text', 'text':data.coursename+"\n指導老師："+data.teachername+"\n星期"+data.whichday+"\n從第"+data.courseStartTime+"節課到第"+data.courseEndTime+"節課"},]
+                        );  
+                    }  
+                })
+            }
         }
     );
 });
