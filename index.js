@@ -28,7 +28,7 @@ bot.on('message', function(event) {
             const userId = profile.userId;
 	    
             
-            if (event.message.text.includes("查詢","老師")) {
+            if (event.message.text.includes("查詢")) {
                 //使用者傳來的學號
                 const teachername = event.message.text.substr(2);
                 //呼叫API取得學生資料
