@@ -6,6 +6,7 @@ var express = require('express');
 
 //增加引用函式
 const course = require('./utility/course');
+const teacher = require('./utility/teacher');
 
 //----------------------------------------
 // 填入自己在Line Developers的channel值
@@ -43,7 +44,24 @@ bot.on('message', function(event) {
                         );  
                     }  
                 })
-            }      
+            }
+            if (event.message.text.includes("查詢")) {
+                //使用者傳來的學號
+                const teachername = event.message.text.substr(2);
+                //呼叫API取得學生資料
+                course.fetchCourse(teachername).then(data => {  
+                    if (data == -1){
+                        event.reply('找不到資料');
+                    }else if(data == -9){                    
+                        event.reply('執行錯誤');
+                    }else{
+                        event.reply([
+                            {'type':'text', 'text':"指導老師："+data.teachername},]
+                        );  
+                    }  
+                })
+            }
+
         }
     );
 });
