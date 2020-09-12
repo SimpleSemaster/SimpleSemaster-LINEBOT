@@ -32,7 +32,7 @@ bot.on('message', function(event) {
                 //使用者傳來的學號
                 const teachername = event.message.text.substr(2);
                 //呼叫API取得學生資料
-                course.fetchCourse(teachername).then(data => {  
+                teacher.fetchCourse(teachername).then(data => {  
                     if (data == -1){
                         event.reply('找不到資料');
                     }else if(data == -9){                    
