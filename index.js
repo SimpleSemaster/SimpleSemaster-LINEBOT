@@ -5,8 +5,9 @@ var linebot = require('linebot');
 var express = require('express');
 
 //增加引用函式
-const course = require('./utility/course');
 const teacher = require('./utility/teacher');
+const course = require('./utility/course');
+
 
 //----------------------------------------
 // 填入自己在Line Developers的channel值
