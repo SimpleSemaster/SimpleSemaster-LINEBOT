@@ -34,7 +34,7 @@ bot.on('message', function(event) {
                 //呼叫API取得學生資料
                 teacher.fetchTeacher(teachername).then(data => {  
                     if (data == -1){
-                        event.reply('找不到資料');
+                        event.reply('找不到老師資料');
                     }else if(data == -9){                    
                         event.reply('執行錯誤');
                     }else{
