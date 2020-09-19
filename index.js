@@ -44,8 +44,7 @@ bot.on('message', function(event) {
                         );  
                     }  
                 })
-            }
-           if (event.message.text.includes("查詢")) {
+            }else if (event.message.text.includes("查詢")) {
                 //使用者傳來的學號
                 const coursename = event.message.text.substr(2);
                 //呼叫API取得學生資料
