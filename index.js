@@ -54,17 +54,17 @@ bot.on('message', function(event) {
                                 },
                                 "actions": [
                                     {
-                                      "type": "text",
+                                      "type": "message",
                                       "label": "星期一",
                                       "text": "星期一"
                                     },
                                     {
-                                        "type": "text",
+                                        "type": "message",
                                         "label": "星期二",
                                         "text": "星期二"
                                       },
                                     {
-                                      "type": "text",
+                                      "type": "message",
                                       "label": "星期三",
                                       "text": "星期三"
                                     },
