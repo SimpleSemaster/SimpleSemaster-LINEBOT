@@ -73,6 +73,11 @@ bot.on('message', function(event) {
                                         "label": "星期四",
                                         "text": "星期四"
                                     },
+                                    {
+                                        "type": "message",
+                                        "label": "星期五",
+                                        "text": "星期五"
+                                    },
                                     
                                 ]
                             }
