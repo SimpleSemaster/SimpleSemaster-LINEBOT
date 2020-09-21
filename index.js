@@ -41,10 +41,15 @@ bot.on('message', function(event) {
                     }else{
                         event.reply({
                             "type": "template",
-                            "altText": "選擇星期幾",
+                            "altText": "請選擇星期幾",
                             "template": {
                                 "type": "buttons",
-                                "title": "要查詢老師星期幾的課表呢？",
+                                "title": "要查詢星期幾呢？",
+                                "defaultAction": {
+                                    "type": "uri",
+                                    "label": "詳細資料",
+                                    "uri": "https://zh.wikipedia.org/wiki/%E6%98%9F%E5%A4%9C"
+                                },
                                 "actions": [
                                     {
                                       "type": "postback",
