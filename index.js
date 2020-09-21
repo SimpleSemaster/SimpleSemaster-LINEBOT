@@ -49,7 +49,7 @@ bot.on('message', function(event) {
                                 "imageSize": "cover",
                                 "imageBackgroundColor": "#FFFFFF",
                                 "title": "要查詢星期幾呢？",
-                                "text": "",
+                                "text": "test",
                                 "defaultAction": {
                                     "type": "uri",
                                     "label": "詳細資料",
