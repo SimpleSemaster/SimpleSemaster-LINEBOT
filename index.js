@@ -68,31 +68,6 @@ bot.on('message', function(event) {
                                       "label": "星期三",
                                       "text": "星期三"
                                     },
-                                    {
-                                        "type": "postback",
-                                        "label": "星期四",
-                                        "text": "星期四"
-                                    },
-                                    {
-                                        "type": "postback",
-                                        "label": "星期五",
-                                        "text": "星期五"
-                                    },
-                                    {
-                                        "type": "postback",
-                                        "label": "星期六",
-                                        "text": "星期六"
-                                    },
-                                    {
-                                        "type": "postback",
-                                        "label": "星期日",
-                                        "text": "星期日"
-                                    },
-                                    {
-                                        "type": "postback",
-                                        "label": "列出全部",
-                                        "text": "列出全部"
-                                    },
                                 ]
                             }
                           });  
