@@ -41,10 +41,15 @@ bot.on('message', function(event) {
                     }else{
                         event.reply({
                             "type": "template",
-                            "altText": "請選擇星期幾",
+                            "altText": "選擇星期幾",
                             "template": {
                                 "type": "buttons",
+                                "thumbnailImageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p01.jpg",
+                                "imageAspectRatio": "rectangle",
+                                "imageSize": "cover",
+                                "imageBackgroundColor": "#FFFFFF",
                                 "title": "要查詢星期幾呢？",
+                                "text": "荷蘭後印象派畫家文森特·梵谷於1890年在法國聖雷米的一家精神病院裏創作的一幅著名油畫",
                                 "defaultAction": {
                                     "type": "uri",
                                     "label": "詳細資料",
