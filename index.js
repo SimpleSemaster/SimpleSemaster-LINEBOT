@@ -45,8 +45,8 @@ bot.on('message', function(event) {
                             "template": {
                                 "type": "buttons",
                                 
-                                "title": "要查詢星期幾呢？",
-                                "text": " ",
+                                "title": teachername+"老師",
+                                "text": "要查詢星期幾呢？",
                                 "defaultAction": {
                                     "type": "uri",
                                     "label": "詳細資料",
@@ -55,8 +55,8 @@ bot.on('message', function(event) {
                                 "actions": [
                                     {
                                       "type": "postback",
-                                      "label": "買了",
-                                      "data": "action=buy&itemid=123"
+                                      "label": "星期一",
+                                      "text": "星期一"
                                     },
                                     {
                                       "type": "postback",
