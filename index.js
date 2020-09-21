@@ -45,8 +45,8 @@ bot.on('message', function(event) {
                             "template": {
                                 "type": "buttons",
                                 
-                                "title": "title=teachername",
-                                "text": "要查詢星期幾呢？",
+                                "title": "要查詢星期幾呢？",
+                                "text": " ",
                                 "defaultAction": {
                                     "type": "uri",
                                     "label": "詳細資料",
@@ -59,15 +59,40 @@ bot.on('message', function(event) {
                                       "text": "星期一"
                                     },
                                     {
+                                        "type": "postback",
+                                        "label": "星期二",
+                                        "text": "星期二"
+                                      },
+                                    {
                                       "type": "postback",
-                                      "label": "加入購物車",
-                                      "data": "action=add&itemid=123"
+                                      "label": "星期三",
+                                      "text": "星期三"
                                     },
                                     {
-                                      "type": "uri",
-                                      "label": "詳細資料",
-                                      "uri": "https://zh.wikipedia.org/wiki/%E6%98%9F%E5%A4%9C"
-                                    }
+                                        "type": "postback",
+                                        "label": "星期四",
+                                        "text": "星期四"
+                                    },
+                                    {
+                                        "type": "postback",
+                                        "label": "星期五",
+                                        "text": "星期五"
+                                    },
+                                    {
+                                        "type": "postback",
+                                        "label": "星期六",
+                                        "text": "星期六"
+                                    },
+                                    {
+                                        "type": "postback",
+                                        "label": "星期日",
+                                        "text": "星期日"
+                                    },
+                                    {
+                                        "type": "postback",
+                                        "label": "列出全部",
+                                        "text": "列出全部"
+                                    },
                                 ]
                             }
                           });  
