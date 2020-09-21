@@ -46,7 +46,7 @@ bot.on('message', function(event) {
                                 "type": "buttons",
                                 
                                 "title": "要查詢星期幾呢？",
-                                "text": " ",
+                                "text": teachername,
                                 "defaultAction": {
                                     "type": "uri",
                                     "label": "詳細資料",
