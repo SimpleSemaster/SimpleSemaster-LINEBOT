@@ -44,10 +44,7 @@ bot.on('message', function(event) {
                             "altText": "選擇星期幾",
                             "template": {
                                 "type": "buttons",
-                                "thumbnailImageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p01.jpg",
-                                "imageAspectRatio": "rectangle",
-                                "imageSize": "cover",
-                                "imageBackgroundColor": "#FFFFFF",
+                                
                                 "title": "要查詢星期幾呢？",
                                 "text": " ",
                                 "defaultAction": {
