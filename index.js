@@ -7,6 +7,7 @@ var express = require('express');
 //增加引用函式
 const teacher = require('./utility/teacher');
 const course = require('./utility/course');
+const whichday = require('./utility/whichday');
 
 
 //----------------------------------------
@@ -42,7 +43,7 @@ bot.on('message', function(event) {
                         event.reply('要查詢星期幾呢？');
                         if (event.message.text.includes("星期")) {
                             const whichday = event.message.text.substr(2);
-                            course.fetchCourse(whichday).then(data => {  
+                            whichday.fetchWhichday(whichday).then(data => {  
                                 if (data == -1){
                                     event.reply('找不到資料');
                                 }else if(data == -9){                    
