@@ -39,49 +39,20 @@ bot.on('message', function(event) {
                     }else if(data == -9){                    
                         event.reply('執行錯誤');
                     }else{
-                        event.reply({
-                            "type": "template",
-                            "altText": "選擇星期幾",
-                            "template": {
-                                "type": "buttons",
-                                
-                                "title": "要查詢星期幾呢？",
-                                "text": teachername,
-                                "defaultAction": {
-                                    "type": "uri",
-                                    "label": "詳細資料",
-                                    "uri": "https://zh.wikipedia.org/wiki/%E6%98%9F%E5%A4%9C"
-                                },
-                                "actions": [
-                                    {
-                                      "type": "message",
-                                      "label": "星期一",
-                                      "text": "星期一"
-                                    },
-                                    {
-                                        "type": "message",
-                                        "label": "星期二",
-                                        "text": "星期二"
-                                      },
-                                    {
-                                      "type": "message",
-                                      "label": "星期三",
-                                      "text": "星期三"
-                                    },
-                                    {
-                                        "type": "message",
-                                        "label": "星期四",
-                                        "text": "星期四"
-                                    },
-                                    {
-                                        "type": "message",
-                                        "label": "星期五",
-                                        "text": "星期五"
-                                    },
-                                    
-                                ]
-                            }
-                          });  
+                        event.reply('要查詢星期幾呢？');
+                        if (event.message.text.includes("星期")) {
+                            const whichday = event.message.text.substr(2);
+                            course.fetchCourse(whichday).then(data => {  
+                                if (data == -1){
+                                    event.reply('找不到資料');
+                                }else if(data == -9){                    
+                                    event.reply('執行錯誤');
+                                }else{
+                                    event.reply([
+                                        {'type':'text', 'text':data.coursename+"\n指導老師："+data.teachername+"\n星期"+data.whichday+"\n從第"+data.courseStartTime+"節課到第"+data.courseEndTime+"節課"},]
+                                    );  
+                                }  
+                        }     
                     }  
                 })
             }else if (event.message.text.includes("查詢")) {
