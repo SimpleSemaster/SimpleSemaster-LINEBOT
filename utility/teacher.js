@@ -12,10 +12,10 @@ var fetchTeacher = async function(teachername){
 
     //讀取資料庫
     await query('select teachername,* from teacher,course where teachername = $1 and course.teacherno = teacher.teacherno', [teachername])
-        .then((data) => {
-            if(data.rows.length > 0){
-                for (var i = 0; i < data.rows.length; i++) {
-                    result = data.rows[i];
+        .then((result) => {
+            if(result.rows.length > 0){
+                for (var i = 0; i < result.rows.length; i++) {
+                    result = result.rows[i];
                 } //學生資料(物件)
             }else{
                 result = -1;  //找不到資料
@@ -25,7 +25,8 @@ var fetchTeacher = async function(teachername){
         });
 
     //回傳執行結果
-    return result;  
+    return result;
+      
 }
 //------------------------------------------
 
