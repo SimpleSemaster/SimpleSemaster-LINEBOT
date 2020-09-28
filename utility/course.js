@@ -11,7 +11,7 @@ var fetchCourse = async function(coursename){
     let result;  
 
     //讀取資料庫
-    await query('select * from course,teacher where coursename = $1', [coursename])
+    await query('select * from course where coursename = $1', [coursename])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows[0];  //學生資料(物件)
