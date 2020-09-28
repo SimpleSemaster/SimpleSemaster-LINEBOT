@@ -14,10 +14,9 @@ var fetchTeacher = async function(teachername){
     await query('select teachername,* from teacher,course where teachername = $1 and course.teacherno = teacher.teacherno', [teachername])
         .then((data) => {
             if(data.rows.length > 0){
-                result = data.rows[0];
-                /*for (var i = 0; i < data.rows.length; i++) {
+                for (var i = 0; i < data.rows.length; i++) {
                     result = data.rows[i];
-                }*/ //學生資料(物件)
+                } //學生資料(物件)
             }else{
                 result = -1;  //找不到資料
             }    
