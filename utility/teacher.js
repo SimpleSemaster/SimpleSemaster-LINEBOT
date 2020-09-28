@@ -15,7 +15,7 @@ var fetchTeacher = async function(teachername){
         .then((data) => {
             if(data.rows.length > 0){
                 for (var i = 0; i < data.rows.length; i++) {
-                    result = data.rows[i];
+                    result = data.rows[2];
                   } //學生資料(物件)
             }else{
                 result = -1;  //找不到資料
