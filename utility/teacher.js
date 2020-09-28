@@ -8,7 +8,7 @@ const query = require('./asyncDB');
 //------------------------------------------
 var fetchTeacher = async function(teachername){
     //存放結果
-    //var result =[];  
+    var result =[];  
 
     //讀取資料庫
     await query('select teachername,* from teacher,course where teachername = $1 and course.teacherno = teacher.teacherno', [teachername])
