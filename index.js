@@ -71,7 +71,7 @@ bot.on('message', function(event) {
                         event.reply('執行錯誤');
                     }else{
                         event.reply([
-                            {'type':'text', 'text':data.coursename+"\n指導老師："+data.teacherno+"\n星期"+data.whichday+"\n從第"+data.courseStartTime+"節課到第"+data.courseEndTime+"節課"},]
+                            {'type':'text', 'text':data.coursename+"\n指導老師："+data.teachername+"\n星期"+data.whichday+"\n從第"+data.courseStartTime+"節課到第"+data.courseEndTime+"節課"},]
                         );  
                     }  
                 })
