@@ -49,8 +49,8 @@ bot.on('message', function(event) {
                             msg = msg + '\n';
                         }
                         msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.courseStartTime + "節課到第" + item.courseEndTime + "節課\n";
-                    });
-                    event.reply({type:'text', text: msg});
+                        });
+                    event.reply({type:'text', text: msg + "\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
                         /*event.reply('要查詢星期幾呢？');
                         if (event.message.text.includes("星期")) {
                             const whichday = event.message.text.substr(2);
