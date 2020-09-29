@@ -40,9 +40,17 @@ bot.on('message', function(event) {
                     }else if(data == -9){                    
                         event.reply('執行錯誤');
                     }else{
-                        event.reply([
-                            {'type':'text', 'text':data.teachername+"老師\n課程名稱："+data.coursename+"\n星期"+data.whichday+"\n從第"+data.courseStartTime+"節課到第"+data.courseEndTime+"節課"},]
-                        );
+                        let msg='';
+                        let firstLine = true;
+                        data.forEach(item => {
+                        if(firstLine){                            
+                            firstLine=false;
+                        }else{
+                            msg = msg + '\n';
+                        }
+                        msg = msg + item.teachername + ':';
+                    });
+                    event.reply({type:'text', text: msg});
                         /*event.reply('要查詢星期幾呢？');
                         if (event.message.text.includes("星期")) {
                             const whichday = event.message.text.substr(2);

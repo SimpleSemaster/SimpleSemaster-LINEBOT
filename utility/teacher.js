@@ -8,13 +8,13 @@ const query = require('./asyncDB');
 //------------------------------------------
 var fetchTeacher = async function(teachername){
     //存放結果
-    var result =[];  
+    var result;  
 
     //讀取資料庫
     await query('select teachername,* from teacher,course where teachername = $1 and course.teacherno = teacher.teacherno', [teachername])
         .then((data) => {
             if(data.rows.length > 0){
-                result = data.rows[0];
+                result = data.rows;
                 /*for (var i = 0; i < data.rows.length; i++) {
                     result = (data.rows[i]);
                 }*/ //學生資料(物件)
