@@ -48,7 +48,7 @@ bot.on('message', function(event) {
                         }else{
                             msg = msg + '\n';
                         }
-                        msg = msg + item.teachername + ':';
+                        msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.courseStartTime + "節課到第" + item.courseEndTime;
                     });
                     event.reply({type:'text', text: msg});
                         /*event.reply('要查詢星期幾呢？');
