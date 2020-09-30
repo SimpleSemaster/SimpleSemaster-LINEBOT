@@ -8,8 +8,8 @@ var express = require('express');
 const teacher = require('./utility/teacher');
 const course = require('./utility/course');
 const whichday = require('./utility/whichday');
-function addMinutes(time, minutes) {
-    return new Date(time + minutes*60000);
+function addMinutes(date, minutes) {
+    return new Date(date.getTime() + minutes*60000);
 }
 
 //----------------------------------------
