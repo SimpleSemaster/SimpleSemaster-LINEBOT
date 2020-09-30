@@ -50,7 +50,7 @@ bot.on('message', function(event) {
                         }else{
                             msg = msg + '\n';
                         }
-                        msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime + ")到第" + item.endtime + "節課("+ addMinutes(item.periodstarttime,50*(item.endtime - item.starttime) + ")\n";
+                        msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime + ")到第" + item.endtime + "節課("+ addMinutes(item.periodstarttime,50*(item.endtime - item.starttime)) + ")\n";
                         });
                     event.reply({type:'text', text: msg + "\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
                         /*event.reply('要查詢星期幾呢？');
