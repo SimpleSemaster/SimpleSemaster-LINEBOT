@@ -45,11 +45,10 @@ bot.on('message', function(event) {
                         data.forEach(item => {
                         if(firstLine){                            
                             firstLine=false;
-                            let diff = item.starttime - item.endtime;
                         }else{
                             msg = msg + '\n';
                         }
-                        msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime + ")到第" + item.endtime + "節課("+ setTime( item.periodfinishtime + 1000 * 60 * diff ) + ")\n";
+                        msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime + ")到第" + item.endtime + "節課("+ setTime( item.periodfinishtime + 1000 * 60 * 50 * item.endtime - item.starttime ) + ")\n";
                         });
                     event.reply({type:'text', text: msg + "\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
                         /*event.reply('要查詢星期幾呢？');
