@@ -9,7 +9,7 @@ const teacher = require('./utility/teacher');
 const course = require('./utility/course');
 const whichday = require('./utility/whichday');
 function addMinutes(time, minutes) {
-    return new Date(time.getTime() + minutes*60000);
+    return new Date(time + minutes*60000);
 }
 
 //----------------------------------------
