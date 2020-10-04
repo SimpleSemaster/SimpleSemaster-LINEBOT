@@ -49,7 +49,7 @@ bot.on('message', function(event) {
                             msg = msg + '\n';
                         }
                         var t = item.starttime;
-                        msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime.slice(0,-3) + ")到第" + item.endtime + "節課("+ item.periodendtime.slice(0,-3) + ")\n";
+                        msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime.slice(0,-3) + ")到第" + item.endtime + "節課("+ item.periodendtime.slice(0,-3) + ")\n教室："+item.classroom;
                         });
                     event.reply({type:'text', text: msg + "\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
                         /*event.reply('要查詢星期幾呢？');
@@ -80,7 +80,7 @@ bot.on('message', function(event) {
                         event.reply('執行錯誤');
                     }else{
                         event.reply([
-                            {'type':'text', 'text':data.coursename+"\n指導老師："+data.teachername+"\n星期"+data.whichday+"\n從第"+ data.starttime + "節課("+ data.periodstarttime.slice(0,-3) + ")到第" + data.endtime + "節課("+ data.periodendtime.slice(0,-3)+"節課\n教室："+data.classroom},]
+                            {'type':'text', 'text':data.coursename+"\n指導老師："+data.teachername+"\n星期"+data.whichday+"\n從第"+ data.starttime + "節課("+ data.periodstarttime.slice(0,-3) + ")到第" + data.endtime + "節課("+ data.periodendtime.slice(0,-3)+")\n教室："+data.classroom},]
                         );  
                     }  
                 })
