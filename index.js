@@ -80,7 +80,7 @@ bot.on('message', function(event) {
                         event.reply('執行錯誤');
                     }else{
                         event.reply([
-                            {'type':'text', 'text':data.coursename+"\n指導老師："+data.teachername+"\n星期"+data.whichday+"\n從第"+data.courseStartTime+"節課到第"+data.courseEndTime+"節課"},]
+                            {'type':'text', 'text':data.coursename+"\n指導老師："+data.teachername+"\n星期"+data.whichday+"\n從第"+ data.starttime + "節課("+ data.periodstarttime.slice(0,-3) + ")到第" + data.endtime + "節課("+ data.periodendtime.slice(0,-3)+"節課\n教室："+data.classroom},]
                         );  
                     }  
                 })
