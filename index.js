@@ -35,7 +35,7 @@ bot.on('message', function(event) {
                 //呼叫API取得學生資料
                 credits.fetchCredits(year).then(data => {  
                     if (data == -1){
-                        event.reply('找不到資料');
+                        event.reply('找不到學年度資料');
                     }else if(data == -9){                    
                         event.reply('執行錯誤');
                     }else{
