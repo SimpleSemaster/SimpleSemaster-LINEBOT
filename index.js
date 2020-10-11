@@ -58,13 +58,25 @@ bot.on('message', function(event) {
                 //使用者傳來的學號
                 const year = event.message.text.slice(2,-7);
                 //呼叫API取得學生資料
-                credits.fetchCredits(year).then(data => {  
+                credits.fetchYear(year).then(data => {  
                     if (data == -1){
                         event.reply('找不到學年度資料');
                     }else if(data == -9){                    
                         event.reply('執行錯誤');
                     }else{
-                        event.reply('請輸入欲查詢學制'); 
+                        event.reply('請輸入欲查詢學制');
+                        const sys = event.message.text;
+                        credits.fetchSys(sys).then(data => {  
+                            if (data == -1){
+                                event.reply('找不到學制資料');
+                            }else if(data == -9){                    
+                                event.reply('執行錯誤');
+                            }else{
+                                event.reply([
+                                    {'type':'text', 'text':data.year},]
+                                );    
+                            }
+                        })
                     }
                 })
             }else if (event.message.text.includes("查詢")) {
