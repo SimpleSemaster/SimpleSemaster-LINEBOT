@@ -54,6 +54,19 @@ bot.on('message', function(event) {
                         event.reply({type:'text', text: msg + "\n詳細以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
                     }  
                 })
+            }else if (event.message.text.includes("查詢")&&event.message.text.includes("學年度畢業門檻")) {
+                //使用者傳來的學號
+                const year = event.message.text.slice(2,-7);
+                //呼叫API取得學生資料
+                credits.fetchCredits(year).then(data => {  
+                    if (data == -1){
+                        event.reply('找不到學年度資料');
+                    }else if(data == -9){                    
+                        event.reply('執行錯誤');
+                    }else{
+                        event.reply('請輸入欲查詢學制'); 
+                    }
+                })
             }else if (event.message.text.includes("查詢")) {
                 //使用者傳來的學號
                 const coursename = event.message.text.substr(2);
@@ -68,19 +81,6 @@ bot.on('message', function(event) {
                             {'type':'text', 'text':data.coursename+"\n指導老師："+data.teachername+"\n星期"+data.whichday+"\n從第"+ data.starttime + "節課("+ data.periodstarttime.slice(0,-3) + ")到第" + data.endtime + "節課("+ data.periodendtime.slice(0,-3)+")\n教室："+data.classroom},]
                         );  
                     }  
-                })
-            }else if (event.message.text.includes("查詢")&&event.message.text.includes("學年度畢業門檻")) {
-                //使用者傳來的學號
-                const year = event.message.text.slice(2,-7);
-                //呼叫API取得學生資料
-                credits.fetchCredits(year).then(data => {  
-                    if (data == -1){
-                        event.reply('找不到學年度資料');
-                    }else if(data == -9){                    
-                        event.reply('執行錯誤');
-                    }else{
-                        event.reply('請輸入欲查詢學制'); 
-                    }
                 })
             }
         }
