@@ -41,7 +41,7 @@ bot.on('message', function(event) {
                     }else{
                         event.reply('請輸入欲查詢學制'); 
                     }
-                }
+                })
             }
             
             if (event.message.text.includes("查詢")&&event.message.text.includes("老師")) {
