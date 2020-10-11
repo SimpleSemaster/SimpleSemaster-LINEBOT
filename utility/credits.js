@@ -6,7 +6,7 @@ const query = require('./asyncDB');
 //------------------------------------------
 // 由學號查詢學生資料
 //------------------------------------------
-var fetchCredits = async function(stuNo){
+var fetchCredits = async function(year){
     //存放結果
     let result;  
 
