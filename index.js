@@ -7,7 +7,7 @@ var express = require('express');
 //增加引用函式
 const teacher = require('./utility/teacher');
 const course = require('./utility/course');
-const whichday = require('./utility/whichday');
+const credits = require('./utility/credits');
 
 
 //----------------------------------------
@@ -28,7 +28,21 @@ bot.on('message', function(event) {
             //取得使用者資料
             const userName = profile.displayName;
             const userId = profile.userId;
-	    
+            
+            if (event.message.text.includes("查詢")&&event.message.text.includes("學年度畢業門檻")) {
+                //使用者傳來的學號
+                const year = event.message.text.slice(2,-7);
+                //呼叫API取得學生資料
+                credits.fetchCredits(year).then(data => {  
+                    if (data == -1){
+                        event.reply('找不到資料');
+                    }else if(data == -9){                    
+                        event.reply('執行錯誤');
+                    }else{
+                        event.reply('請輸入欲查詢學制'); 
+                    }
+                }
+            }
             
             if (event.message.text.includes("查詢")&&event.message.text.includes("老師")) {
                 //使用者傳來的學號
@@ -51,22 +65,7 @@ bot.on('message', function(event) {
                         var t = item.starttime;
                         msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime.slice(0,-3) + ")到第" + item.endtime + "節課("+ item.periodendtime.slice(0,-3) + ")\n教室："+item.classroom + "\n";
                         });
-                    event.reply({type:'text', text: msg + "\n詳細以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
-                        /*event.reply('要查詢星期幾呢？');
-                        if (event.message.text.includes("星期")) {
-                            const whichday = event.message.text.substr(2);
-                            whichday.fetchWhichday(whichday).then(data => {  
-                                if (data == -1){
-                                    event.reply('找不到資料');
-                                }else if(data == -9){                    
-                                    event.reply('執行錯誤');
-                                }else{
-                                    event.reply([
-                                        {'type':'text', 'text':"星期"+data.whichday},]
-                                    );  
-                                }
-                            })      
-                        }*/     
+                        event.reply({type:'text', text: msg + "\n詳細以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
                     }  
                 })
             }else if (event.message.text.includes("查詢")) {

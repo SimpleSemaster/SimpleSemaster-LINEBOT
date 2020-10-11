@@ -6,12 +6,12 @@ const query = require('./asyncDB');
 //------------------------------------------
 // 由學號查詢學生資料
 //------------------------------------------
-var fetchWhichday = async function(whichday){
+var fetchCredits = async function(stuNo){
     //存放結果
     let result;  
 
     //讀取資料庫
-    await query('select * from course,teacher where whichday = $1', [whichday])
+    await query('select * from credits where year = $1', [year])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows[0];  //學生資料(物件)
@@ -28,4 +28,4 @@ var fetchWhichday = async function(whichday){
 //------------------------------------------
 
 //匯出
-module.exports = {fetchWhichday};
+module.exports = {fetchCredits};
