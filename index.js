@@ -65,8 +65,8 @@ bot.on('message', function(event) {
                         event.reply('執行錯誤');
                     }else{
                         event.reply('請輸入欲查詢學制');
-                        const sys = event.message.text;
-                        credits.fetchSys(sys).then(data => {  
+                        const schoolsys = event.message.text;
+                        credits.fetchSys(schoolsys).then(data => {  
                             if (data == -1){
                                 event.reply('找不到學制資料');
                             }else if(data == -9){                    
