@@ -54,10 +54,10 @@ bot.on('message', function(event) {
                         event.reply({type:'text', text: msg + "\n詳細以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
                     }  
                 })
-            }else if (event.message.text.includes("查詢")&&event.message.text.includes("畢業門檻")) {
+            }else if (event.message.text.includes("查詢")&&event.message.text.includes("學年度")&&event.message.text.includes("畢業門檻")) {
                 //使用者傳來的學號
-                const year = event.message.text.slice(2,-6);
-                const schoolsys = event.message.text.slice(5,-4);
+                const year = event.message.text.slice(2,-9);
+                const schoolsys = event.message.text.slice(8,-4);
                 //呼叫API取得學生資料
                 credits.fetchCredits(year,schoolsys).then(data => {  
                     if (data == -1){
