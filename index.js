@@ -67,11 +67,9 @@ bot.on('message', function(event) {
                     }else{
                         event.reply([
                             {'type':'text', 'text':"必修：學校每學期會安排必修課，不用自己選。\n安排的必修課都要過才能畢業。\n\n專業選修：在選課網上有標註【專選】之課程，\n需要自己選課並計算學分數，\n專選學分若未達指定門檻，\n即使總學分有超過畢業門檻也無法畢業。\n\n其餘課程(通識、一般選修等)與必修、專選學分相加後超過總學分即達成畢業門檻。\n\n"+
-                            data.year + data.schoolsys +"的總學分數為" + data.minicre + "，\n其中專選學分數為" + data.minielecre +"。"},]
-                        );
-                        event.reply([
+                            data.year + data.schoolsys +"的總學分數為" + data.minicre + "，\n其中專選學分數為" + data.minielecre +"。"},
                             {'type':'text', 'text':"詳情可上教務處網址查詢：https://acad.ntub.edu.tw/p/412-1004-1718.php?Lang=zh-tw"},]
-                        );    
+                        );  
                     }
                 })
             }else if (event.message.text.includes("查詢")) {
