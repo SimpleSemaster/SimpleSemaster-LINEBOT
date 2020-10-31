@@ -73,6 +73,12 @@ bot.on('message', function(event) {
                         );  
                     }
                 })
+            }else if(event.message.text.includes("查詢教師課表")){
+                event.reply("請輸入【查詢(老師名字)老師】，例如：查詢林宏仁老師");
+            }else if(event.message.text.includes("查詢畢業門檻")){
+                event.reply("請輸入【查詢(學年度)學年度(學制)畢業門檻】，例如：查詢105學年度五專畢業門檻");
+            }else if(event.message.text.includes("借用教室&設備")){
+                event.reply("請輸入【查詢(學年度)學年度(學制)畢業門檻】，例如：查詢105學年度五專畢業門檻");            
             }else if (event.message.text.includes("查詢")) {
                 //使用者傳來的學號
                 const coursename = event.message.text.substr(2);
