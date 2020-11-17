@@ -51,7 +51,7 @@ bot.on('message', function(event) {
                         office = item.office;
                         msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime.slice(0,-3) + ")到第" + item.endtime + "節課("+ item.periodendtime.slice(0,-3) + ")\n教室："+item.classroom + "\n";
                         });
-                        event.reply({type:'text', text: teachername+"教師的辦公室為："+office+"\n"+ msg +"\n詳細以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
+                        event.reply({type:'text', text: teachername+"老師的辦公室為："+office+"\n"+ msg +"\n詳細以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
                     }  
                 })
             }else if (event.message.text.includes("查詢")&&event.message.text.includes("學年度")&&event.message.text.includes("畢業門檻")) {
@@ -73,10 +73,12 @@ bot.on('message', function(event) {
                         );  
                     }
                 })
-            }else if(event.message.text.includes("查詢教師課表")){
-                event.reply("請輸入【查詢(老師名字)老師】，例如：查詢林宏仁老師");
+            }else if(event.message.text.includes("查詢教師資訊")){
+                event.reply("請輸入【查詢(老師名字)老師】，例如：查詢葉明貴老師");
             }else if(event.message.text.includes("查詢畢業門檻")){
                 event.reply("請輸入【查詢(學年度)學年度(學制)畢業門檻】，例如：查詢105學年度五專畢業門檻");           
+            }else if(event.message.text.includes("查詢每學期修課學分上下限")){
+                event.reply("二技一年級及四技一至三年級：16~25學分\n二技二年級及四技四年級：9~25學分\n\n五專前三學年：20~34學分\n五專後二學年：12~28學分\n\n夜二技及夜四技：9~25學分");           
             }else if(event.message.text.includes("本系特色")){
                 event.reply({
                     "type": "image",
