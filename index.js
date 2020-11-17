@@ -48,10 +48,10 @@ bot.on('message', function(event) {
                         }else{
                             msg = msg + '\n';
                         }
-                        var t = item.starttime;
+                        office = item.office;
                         msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime.slice(0,-3) + ")到第" + item.endtime + "節課("+ item.periodendtime.slice(0,-3) + ")\n教室："+item.classroom + "\n";
                         });
-                        event.reply({type:'text', text: "\n教師的辦公室為："+item.office+"\n"+ msg +"\n詳細以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
+                        event.reply({type:'text', text: "\n教師的辦公室為："+office+"\n"+ msg +"\n詳細以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
                     }  
                 })
             }else if (event.message.text.includes("查詢")&&event.message.text.includes("學年度")&&event.message.text.includes("畢業門檻")) {
