@@ -77,7 +77,7 @@ bot.on('message', function(event) {
                 event.reply("請輸入【查詢(老師名字)老師】，例如：查詢葉明貴老師");
             }else if(event.message.text.includes("查詢畢業門檻")){
                 event.reply("請輸入【查詢(學年度)學年度(學制)畢業門檻】，例如：查詢105學年度五專畢業門檻");           
-            }else if(event.message.text.includes("查詢選課學分數")){
+            }else if(event.message.text.includes("查詢選課學分")){
                 event.reply([
                     {'type':'text', 'text':"二技一年級及四技一至三年級：16~25學分\n二技二年級及四技四年級：9~25學分\n\n五專前三學年：20~34學分\n五專後二學年：12~28學分\n\n夜二技及夜四技：9~25學分"},
                     {'type':'text', 'text':"詳細選課規定請參閱教務處網站：https://acad.ntub.edu.tw/p/412-1004-185.php"}]
