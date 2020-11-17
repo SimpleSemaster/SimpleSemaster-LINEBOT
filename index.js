@@ -8,8 +8,7 @@ var express = require('express');
 const teacher = require('./utility/teacher');
 const course = require('./utility/course');
 const credits = require('./utility/credits');
-const dialogflow = require('dialogflow');
-const uuid = require('uuid');
+
 
 //----------------------------------------
 // 填入自己在Line Developers的channel值
@@ -20,38 +19,6 @@ var bot = linebot({
     channelAccessToken: 'qiYcWUMLVg5qA8FLI192DseDohHH/K473s3XK0jjFgkSv1Gx1sxFhFXGAcjCyDnXL/uN2rTsvPmESiaJDBZJ1uWx6eND/JhjL/pvV49jvUfsmsaJFaVGbsd4EoVDTRp8c74x4KeQ6rqKyASyAjjHfgdB04t89/1O/w1cDnyilFU='
 });
 
-
-async function runSample(projectId = 'newagent-khstto') {
-    // A unique identifier for the given session
-    const sessionId = uuid.v4();
-   
-    // Create a new session
-    const sessionClient = new dialogflow.SessionsClient();
-    const sessionPath = sessionClient.sessionPath(projectId, sessionId);
-   
-    // The text query request.
-    const request = {
-      session: sessionPath,
-      queryInput: {
-        text: {
-          // The query to send to the dialogflow agent
-          text: 'hello',
-          // The language used by the client (en-US)
-          languageCode: 'zh-TW',
-        },
-      },
-    };
-    const responses = await sessionClient.detectIntent(request);
-    console.log('Detected intent');
-    const result = responses[0].queryResult;
-    console.log(`  Query: ${result.queryText}`);
-    console.log(`  Response: ${result.fulfillmentText}`);
-    if (result.intent) {
-        console.log(`  Intent: ${result.intent.displayName}`);
-    } else {
-        console.log(`  No intent matched.`);
-    }
-}
 //--------------------------------
 // 機器人接受訊息的處理
 //--------------------------------
@@ -84,7 +51,7 @@ bot.on('message', function(event) {
                         var t = item.starttime;
                         msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime.slice(0,-3) + ")到第" + item.endtime + "節課("+ item.periodendtime.slice(0,-3) + ")\n教室："+item.classroom + "\n";
                         });
-                        event.reply({type:'text', text: msg + "\n詳細以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
+                        event.reply({type:'text', text: "\n教師的辦公室為："+item.office+"\n"+ msg +"\n詳細以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
                     }  
                 })
             }else if (event.message.text.includes("查詢")&&event.message.text.includes("學年度")&&event.message.text.includes("畢業門檻")) {
