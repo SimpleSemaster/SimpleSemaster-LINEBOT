@@ -3,7 +3,7 @@
 //----------------------------------------
 var express = require('express');
 const { WebhookClient } = require('dialogflow-fulfillment')
-const app = express()
+const app = express();
 
 //增加引用函式
 const teacher = require('./utility/teacher');
