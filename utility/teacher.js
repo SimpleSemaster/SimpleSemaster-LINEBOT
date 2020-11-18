@@ -10,7 +10,7 @@ var fetchTeacher = async function(teachername){
     let result;  
 
     //讀取資料庫
-    await query('select teachername,*,*,* from teacher as a,course as b,periodstarttime as c,periodendtime as d where a.teachername = $1 and b.teacherno = a.teacherno and b.starttime = c.periodstartno and b.daynight = c.daynight and b.endtime = d.periodendno and b.daynight = d.daynight order by whichday' , [teachername]])
+    await query('select teachername,*,*,* from teacher as a,course as b,periodstarttime as c,periodendtime as d where a.teachername = $1 and b.teacherno = a.teacherno and b.starttime = c.periodstartno and b.daynight = c.daynight and b.endtime = d.periodendno and b.daynight = d.daynight order by whichday' , [teachername])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows;  //成績資料(清單)
