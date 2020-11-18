@@ -3,7 +3,6 @@
 //----------------------------------------
 var express = require('express');
 const { WebhookClient } = require('dialogflow-fulfillment');
-
 const app = express();
 
 
@@ -38,7 +37,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
         agent.add('歡迎你!!!');
     }
 
-    function SearchTeacher(agent) {
+    function SearchTeacher() {
         var teachername = req.body.queryResult.parameters.teachername;
         
         return teacher.fetchTeacher(teachername).then(data => {  
