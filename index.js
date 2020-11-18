@@ -27,7 +27,11 @@ var bot = linebot({
 app.post('/dialogflow', express.json(), (req, res) => {    
 
     const agent = new WebhookClient({ request: req, response: res })
-    
+
+    function welcome(){
+        agent.add('歡迎你!!!');
+    }
+
     function SearchTeacher(agent) {
         var teachername = req.body.queryResult.parameters.teachername;
         console.log(teachername);
@@ -137,9 +141,10 @@ app.post('/dialogflow', express.json(), (req, res) => {
             let intentMap = new Map();
             //------------------------------------
             intentMap.set('SearchTeacher', SearchTeacher);
+            intentMap.set('Default Welcome Intent', welcome);
             //------------------------------------
             agent.handleRequest(intentMap);
-        });
+});
    
 
 //----------------------------------------
