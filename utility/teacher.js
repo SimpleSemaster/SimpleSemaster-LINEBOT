@@ -10,7 +10,7 @@ var fetchTeacher = async function(teacherno){
     let result;  
 
     //讀取資料庫
-    await query('select * from teacher where a.teacherno = $1 ' , [teacherno])
+    await query('select * from teacher where teacherno = $1 ' , [teacherno])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows;  //成績資料(清單)
