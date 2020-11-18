@@ -39,9 +39,9 @@ app.post('/dialogflow', express.json(), (req, res) => {
     }
 
     function SearchTeacher() {
-        var teacherno = req.body.queryResult.parameters.teacherno;
+        var teachername = req.body.queryResult.parameters.teachername;
         
-        return teacher.fetchTeacher(teacherno).then(data => {  
+        return teacher.fetchTeacher(teachername).then(data => {  
             if (data == -1){
                 agent.add('找不到老師資料');
             }else if(data == -9){                    
