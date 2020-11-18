@@ -39,7 +39,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
     }
 
     function SearchTeacher() {
-        //var teachername = req.body.queryResult.parameters.teachername;
+        var teachername = req.body.queryResult.teachername;
         
         return teacher.fetchTeacher(teachername).then(data => {  
             if (data == -1){
