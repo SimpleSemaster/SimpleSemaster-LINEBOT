@@ -38,13 +38,6 @@ app.post('/dialogflow', express.json(), (req, res) => {
         agent.add('歡迎你!!!');
     }
 
-    let intentMap = new Map();
-            //------------------------------------
-            /*intentMap.set('SearchTeacher', SearchTeacher);*/
-            intentMap.set('Default Welcome Intent', welcome);
-            //------------------------------------
-            agent.handleRequest(intentMap);
-/*
     function SearchTeacher(agent) {
         var teachername = req.body.queryResult.parameters.teachername;
         console.log(teachername);
@@ -68,7 +61,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
                 agent.add({type:'text', text: teachername+"老師的辦公室為："+office+"\n老師的課表如下："+ msg +"\n詳細課表以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
             }  
         })
-    }*/
+    }
             
             
            /* if (event.message.text.includes("查詢")&&event.message.text.includes("老師")) {
@@ -151,8 +144,14 @@ app.post('/dialogflow', express.json(), (req, res) => {
                     }  
                 })
             }*/
-            
+    let intentMap = new Map();
+    //------------------------------------
+    intentMap.set('SearchTeacher', SearchTeacher)
+    intentMap.set('Default Welcome Intent', welcome);
+    //------------------------------------
+    agent.handleRequest(intentMap);         
 });
+
    
 
 //----------------------------------------
