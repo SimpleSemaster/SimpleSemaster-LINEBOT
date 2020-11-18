@@ -2,8 +2,11 @@
 // 載入必要的模組
 //----------------------------------------
 var express = require('express');
-const { WebhookClient } = require('dialogflow-fulfillment')
+const { WebhookClient } = require('dialogflow-fulfillment');
+const bodyParser = require('body-parser');
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 //增加引用函式
 const teacher = require('./utility/teacher');
