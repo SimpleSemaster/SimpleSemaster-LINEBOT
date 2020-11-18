@@ -3,10 +3,9 @@
 //----------------------------------------
 var express = require('express');
 const { WebhookClient } = require('dialogflow-fulfillment');
-const bodyParser = require('body-parser');
+
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+
 
 //增加引用函式
 const teacher = require('./utility/teacher');
@@ -26,11 +25,14 @@ var bot = linebot({
 //--------------------------------
 // 機器人接受訊息的處理
 //--------------------------------
-app.post('/Dialogflow', express.json(), (req, res) => {
+app.post('/dialogflow', express.json(), (req, res) => {
     //------------------------------------
     // 處理請求/回覆的Dialogflow代理人
     //------------------------------------  
-    const agent = new WebhookClient({request: req, response: res})
+    const agent = new WebhookClient({
+        request: req,
+        response: res
+    });
 
     //------------------------------------
     // 處理歡迎意圖
