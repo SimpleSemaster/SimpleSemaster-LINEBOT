@@ -5,12 +5,12 @@ const query = require('./asyncDB');
 //------------------------------------------
 // 由學號查詢學生成績
 //------------------------------------------
-var fetchTeacher = async function(teacherno){
+var fetchTeacher = async function(teachername){
     //存放結果
     let result;  
 
     //讀取資料庫
-    await query('select * from teacher where teacherno = $1 ' , [teacherno])
+    await query('select * from teacher where teachername = $1 ' , [teachername])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows;  //成績資料(清單)
