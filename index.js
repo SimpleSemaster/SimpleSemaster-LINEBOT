@@ -23,13 +23,19 @@ var bot = linebot({
 //--------------------------------
 // 機器人接受訊息的處理
 //--------------------------------
-app.post('/dialogflow', express.json(), (req, res) => {    
+app.post('/dialogflow', express.json(), (req, res) => {
+    //------------------------------------
+    // 處理請求/回覆的Dialogflow代理人
+    //------------------------------------  
+    const agent = new WebhookClient({request: req, response: res})
 
-    const agent = new WebhookClient({ request: req, response: res })
-
+    //------------------------------------
+    // 處理歡迎意圖
+    //------------------------------------     
     function welcome(){
         agent.add('歡迎你!!!');
     }
+
 /*
     function SearchTeacher(agent) {
         var teachername = req.body.queryResult.parameters.teachername;
