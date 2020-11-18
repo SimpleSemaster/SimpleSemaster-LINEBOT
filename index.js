@@ -1,7 +1,6 @@
 //----------------------------------------
 // 載入必要的模組
 //----------------------------------------
-var linebot = require('linebot');
 var express = require('express');
 const { WebhookClient } = require('dialogflow-fulfillment')
 const app = express()
