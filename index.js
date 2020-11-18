@@ -43,7 +43,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
         
         return teacher.fetchTeacher(teachername).then(data => {  
             if (data == -1){
-                agent.add('幹你老雞掰');
+                agent.add('找不到老師資料');
             }else if(data == -9){                    
                 agent.add('執行錯誤');
             }else{
