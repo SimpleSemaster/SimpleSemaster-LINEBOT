@@ -72,32 +72,27 @@ app.post('/dialogflow', express.json(), (req, res) => {
             }  
         })
     }
+     
+    function SearchCredits(){
+        var year = req.body.queryResult.parameters.year;
+        var schoolsys = req.body.queryResult.parameters.schoolsys;
+        return credits.fetchCredits(year,schoolsys).then(data => {  
+            if (data == -1){
+                agent.add('找不到畢業門檻資料');
+            }else if(data == -9){                    
+                agent.add('執行錯誤');
+            }else{
+                agent.add([
+                    {'type':'text', 'text':"必修：學校每學期會安排必修課，不用自己選。\n安排的必修課都要過才能畢業。\n\n專業選修：在選課網上有標註【專選】之課程，\n需要自己選課並計算學分數，\n專選學分若未達指定門檻，\n即使總學分有超過畢業門檻也無法畢業。\n\n其餘課程(通識、一般選修等)與必修、專選學分相加後超過總學分即達成畢業門檻。\n\n"+
+                    data.year + data.schoolsys +"的總學分數為" + data.minicre + "，\n其中專選學分數為" + data.minielecre +"。"},
+                    {'type':'text', 'text':"詳情可上教務處網站查詢：https://acad.ntub.edu.tw/p/412-1004-1718.php?Lang=zh-tw"},
+                    {'type':'text', 'text':"另有英語能力及專業證照之畢業門檻，請上以下網站查詢：https://imd.ntub.edu.tw/p/412-1043-1051.php"},]
+                );  
+            }
+        })
+    }
             
-            
-           /* if (event.message.text.includes("查詢")&&event.message.text.includes("老師")) {
-                //使用者傳來的學號
-                const teachername = event.message.text.slice(2,-2);
-                //呼叫API取得學生資料
-                teacher.fetchTeacher(teachername).then(data => {  
-                    if (data == -1){
-                        event.reply('找不到老師資料');
-                    }else if(data == -9){                    
-                        event.reply('執行錯誤');
-                    }else{
-                        let msg='';
-                        let firstLine = true; 
-                        data.forEach(item => {
-                        if(firstLine){                            
-                            firstLine=false;
-                        }else{
-                            msg = msg + '\n';
-                        }
-                        office = item.office;
-                        msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime.slice(0,-3) + ")到第" + item.endtime + "節課("+ item.periodendtime.slice(0,-3) + ")\n教室："+item.classroom + "\n";
-                        });
-                        event.reply({type:'text', text: teachername+"老師的辦公室為："+office+"\n"+ msg +"\n詳細以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx"});
-                    }  
-                })
+           /* 
             }else if (event.message.text.includes("查詢")&&event.message.text.includes("學年度")&&event.message.text.includes("畢業門檻")) {
                 //使用者傳來的學號
                 const year = event.message.text.slice(2,-9);
@@ -158,7 +153,8 @@ app.post('/dialogflow', express.json(), (req, res) => {
     //------------------------------------
     intentMap.set('SearchTeacher', SearchTeacher)
     intentMap.set('Default Welcome Intent', welcome);
-    intentMap.set('SearchCourse', SearchCourse);
+    intentMap.set('SearchCourse', SearchCourse);SearchCredits
+    intentMap.set('SearchCredits', SearchCredits);
     //------------------------------------
     agent.handleRequest(intentMap);         
 });
