@@ -67,6 +67,19 @@ app.post('/dialogflow', express.json(), (req, res) => {
             */}  
         })
     }
+
+    function SearchCourse(){
+        var coursename = req.body.queryResult.parameters.coursename;
+        return course.fetchCourse(coursename).then(data => {  
+            if (data == -1){
+                agent.add('找不到資料');
+            }else if(data == -9){                    
+                agent.add('執行錯誤');
+            }else{
+                agent.add(data.coursename+'\n指導老師：'+data.teachername+'\n星期'+data.whichday+'\n從第'+ data.starttime + '節課('+ data.periodstarttime.slice(0,-3) + ')到第' + data.endtime + '節課('+ data.periodendtime.slice(0,-3)+')\n教室：'+data.classroom);  
+            }  
+        })
+    }
             
             
            /* if (event.message.text.includes("查詢")&&event.message.text.includes("老師")) {
@@ -153,6 +166,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
     //------------------------------------
     intentMap.set('SearchTeacher', SearchTeacher)
     intentMap.set('Default Welcome Intent', welcome);
+    intentMap.set('SearchCourse', SearchCourse);
     //------------------------------------
     agent.handleRequest(intentMap);         
 });
