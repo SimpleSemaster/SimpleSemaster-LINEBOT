@@ -47,11 +47,9 @@ app.post('/dialogflow', express.json(), (req, res) => {
             }else if(data == -9){                    
                 agent.add('執行錯誤');
             }else{
-                agent.add('找到老師資料');
-                /*
-                for(var i=0; i<data.length; i++){
+                /*for(var i=0; i<data.length; i++){
                     agent.add(data[i].course + ":" + data[i].score + "分");
-                }  
+                }*/  
                 let msg='';
                 let firstLine = true; 
                 data.forEach(item => {
