@@ -52,7 +52,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
                 }*/  
                 let msg='';
                 let firstLine = true; 
-                data.forEach(item => {
+                data.quotesArray.forEach(item => {
                 if(firstLine){                            
                     firstLine=false;
                 }else{
