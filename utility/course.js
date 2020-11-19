@@ -14,8 +14,7 @@ var fetchCourse = async function(coursename){
     await query('select teachername,*,*,* from teacher as a,course as b,periodstarttime as c,periodendtime as d where coursename = $1 and b.teacherno = a.teacherno and b.starttime = c.periodstartno and b.daynight = c.daynight and b.endtime = d.periodendno and b.daynight = d.daynight', [coursename])
         .then((data) => {
             if(data.rows.length > 0){
-                result = data.rows[0];
-                console.log(data.rows[0]);  //學生資料(物件)
+                result = data.rows[0];  //學生資料(物件)
             }else{
                 result = -1;  //找不到資料
             }    
