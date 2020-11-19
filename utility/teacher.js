@@ -13,7 +13,7 @@ var fetchTeacher = async function(teachername){
     await query('select "teachername",*,*,* from teacher as a,course as b,periodstarttime as c,periodendtime as d where "teachername" = $1 and b.teacherno = a.teacherno and b.starttime = c.periodstartno and b.daynight = c.daynight and b.endtime = d.periodendno and b.daynight = d.daynight order by whichday' , [teachername])
         .then((data) => {
             if(data.rows.length > 0){
-                result = data.rows[0];  //成績資料(清單)
+                result = data.rows;  //成績資料(清單)
             }else{
                 result = -1;  //找不到資料
             }    
