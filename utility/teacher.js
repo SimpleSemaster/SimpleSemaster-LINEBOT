@@ -16,6 +16,7 @@ var fetchTeacher = async function(teachername){
                 result = data.rows;  //成績資料(清單)
             }else{
                 result = -1;  //找不到資料
+                console.log(data.rows);
             }    
         }, (error) => {
             result = -9;  //執行錯誤
