@@ -70,6 +70,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
 
     function SearchCourse(){
         var coursename = req.body.queryResult.parameters.coursename;
+        console.log(coursename);
         return course.fetchCourse(coursename).then(data => {  
             if (data == -1){
                 agent.add('找不到資料');
