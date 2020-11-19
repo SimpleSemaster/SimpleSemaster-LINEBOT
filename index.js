@@ -49,18 +49,15 @@ app.post('/dialogflow', express.json(), (req, res) => {
             }else{
                 var msg='';
                 data.forEach(item => {
-                if(firstLine){                            
-                    firstLine=false;
-                }else{
-                    msg = msg + '\n';
-                }
-                office = item.office;
-                msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime.slice(0,-3) + ")到第" + item.endtime + "節課("+ item.periodendtime.slice(0,-3) + ")\n教室："+item.classroom + "\n";
-                });
+                    office = item.office;
+                    msg = msg + "課程名稱：" + item.coursename + "\n星期" + item.whichday + "\n從第" + item.starttime + "節課("+ item.periodstarttime.slice(0,-3) + ")到第" + item.endtime + "節課("+ item.periodendtime.slice(0,-3) + ")\n教室："+item.classroom + "\n";
+                })
                 agent.add(teachername+"老師的辦公室為："+office+"\n老師的課表如下："+ msg +"\n詳細課表以學校官網為主：\nhttp://ntcbadm.ntub.edu.tw/pub/Cur_Teachers.aspx");
-            }  
+            };
         })
-    }
+    }  
+    
+    
 
     function SearchCourse(){
         var coursename = req.body.queryResult.parameters.coursename;
