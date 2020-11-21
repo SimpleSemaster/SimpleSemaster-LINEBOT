@@ -14,7 +14,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
     "dialogflow": "^0.6.0",
-    "dialogflow-fulfillment": "^0.5.0",
+    "dialogflow-fulfillment": "github:dialogflow/dialogflow-fulfillment-nodejs#master",
     "express": "^4.16.4",
     "pg": "^7.18.2"
   }
