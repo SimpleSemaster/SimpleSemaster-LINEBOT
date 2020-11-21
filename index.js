@@ -121,7 +121,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
                             "actions": [{
                                 "type": "uri",
                                 "label": "View detail",
-                                "uri": "http://www.ntub.edu.tw"
+                                "uri": data.eventlink
                             }]
                         },
                         {
