@@ -153,6 +153,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
                         }
                     }
                 }
+                agent.add(lineMessage);
             };
         })
         
