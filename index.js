@@ -104,7 +104,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
             }else if(data == -9){                    
                 agent.add('執行錯誤');
             }else{
-                agent.add("活動名稱："+eventname+"\n活動網址："+eventlink);
+                agent.add("活動名稱："+data.eventname+"\n活動網址："+data.eventlink);
             }
         })
         
