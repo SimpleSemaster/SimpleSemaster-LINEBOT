@@ -14,6 +14,7 @@ var fetchEvent = async function(){
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows;  //成績資料(清單)
+                console.log(data.rows);
             }else{
                 result = -1;  //找不到資料
             }    
