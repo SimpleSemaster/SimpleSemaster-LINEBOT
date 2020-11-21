@@ -106,52 +106,54 @@ app.post('/dialogflow', express.json(), (req, res) => {
                 agent.add('執行錯誤');
             }else{
                 const lineMessage = {
-                    "line": {
-                        "type": "template",
-                        "altText": "這是一個Carousel文字選單樣板",
-                        "template": {
-                            "type": "carousel",
-                            "columns": [{
-                                "title": "麵類",
-                                "text": "請選擇麵類餐點",
-                                "actions": [{
-                                    "type": "message",
-                                    "label": "想吃牛肉麵",
-                                    "text": "牛肉麵"
-                                },
-                                {
-                                    "type": "message",
-                                    "label": "想吃大魯麵",
-                                    "text": "大魯麵"
-                                },
-                                {
-                                    "type": "message",
-                                    "label": "想吃蕃茄麵",
-                                    "text": "蕃茄麵"
-                                }]
+                    "type": "template",
+                    "altText": "this is a carousel template",
+                    "template": {
+                        "type": "carousel",
+                        "columns":[{
+                            "title": "xxxx",
+                            "text": "xxxxxxx",
+                            "defaultAction": {
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://www.ntub.edu.tw"
                             },
-                            {
-                                "title": "飯類",
-                                "text": "請選擇飯類餐點",
-                                "actions": [{
-                                    "type": "message",
-                                    "label": "想吃蛋炒飯",
-                                    "text": "蛋炒飯"
-                                },
-                                {
-                                    "type": "message",
-                                    "label": "想吃燴飯",
-                                    "text": "燴飯"
-                                },
-                                {
-                                    "type": "message",
-                                    "label": "想吃海鮮炒飯",
-                                    "text": "海鮮炒飯"
-                                }]
-                            }],
-                            "imageAspectRatio": "rectangle",
-                            "imageSize": "cover"
-                        }
+                            "actions": [{
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://www.ntub.edu.tw"
+                            }]
+                        },
+                        {
+                            "title": "xxxx",
+                            "text": "xxxxxxx",
+                            "defaultAction": {
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://www.ntub.edu.tw"
+                            },
+                            "actions": [{
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://www.ntub.edu.tw"
+                            }]
+                        },
+                        {
+                            "title": "xxxx",
+                            "text": "xxxxxxx",
+                            "defaultAction": {
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://www.ntub.edu.tw"
+                            },
+                            "actions": [{
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://www.ntub.edu.tw"
+                            }]
+                        }],
+                        "imageAspectRatio": "square",
+                        "imageSize": "cover"
                     }
                 }
                 var payload = new Payload('LINE', lineMessage, {
