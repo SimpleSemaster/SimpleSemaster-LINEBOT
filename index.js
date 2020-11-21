@@ -106,7 +106,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
             }else{
                 var msg='';
                 data.forEach(item => {
-                    msg = msg +"活動名稱："+item.eventname+"\n活動網址："+item.eventlink+"\n";
+                    msg = "\n"+msg +"活動名稱："+item.eventname+"\n活動網址："+item.eventlink;
                 })
                 agent.add(msg);
             }
