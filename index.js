@@ -11,7 +11,7 @@ const teacher = require('./utility/teacher');
 const course = require('./utility/course');
 const credits = require('./utility/credits');
 const semcredits = require('./utility/semcredits');
-const event = require('./utility/event');
+const events = require('./utility/events');
 
 
 //--------------------------------
@@ -97,8 +97,8 @@ app.post('/dialogflow', express.json(), (req, res) => {
         })
     }  
 
-    function SearchEvent() {
-        return event.fetchEvent().then(data => {  
+    function SearchEvents() {
+        return events.fetchEvent().then(data => {  
             if (data == -1){
                 agent.add('找不到活動資料');
             }else if(data == -9){                    
@@ -122,7 +122,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
     intentMap.set('SearchCourse', SearchCourse);SearchCredits
     intentMap.set('SearchCredits', SearchCredits);
     intentMap.set('SearchSemesterCredits', SearchSemesterCredits);
-    intentMap.set('SearchEvent', SearchEvent);
+    intentMap.set('SearchEvents', SearchEvent);
     //------------------------------------
     agent.handleRequest(intentMap);         
 });
