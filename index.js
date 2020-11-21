@@ -105,63 +105,54 @@ app.post('/dialogflow', express.json(), (req, res) => {
                 agent.add('執行錯誤');
             }else{
                 const lineMessage = {
-                    "type": "template",
-                    "altText": "活動資訊",
-                    "template": {
-                        "type": "carousel",
-                        "columns":[{
-                            "imageBackgroundColor": "#FFFFFF",
-                            "title": data.eventname,
-                            "defaultAction": {
-                                "type": "uri",
-                                "label": "點我查看",
-                                "uri": data.eventlink
+                    "line": {
+                        "type": "template",
+                        "altText": "這是一個Carousel文字選單樣板",
+                        "template": {
+                            "type": "carousel",
+                            "columns": [{
+                                "title": "麵類",
+                                "text": "請選擇麵類餐點",
+                                "actions": [{
+                                    "type": "message",
+                                    "label": "想吃牛肉麵",
+                                    "text": "牛肉麵"
+                                },
+                                {
+                                    "type": "message",
+                                    "label": "想吃大魯麵",
+                                    "text": "大魯麵"
+                                },
+                                {
+                                    "type": "message",
+                                    "label": "想吃蕃茄麵",
+                                    "text": "蕃茄麵"
+                                }]
                             },
-                            "actions": [{
-                                "type": "uri",
-                                "label": "點我查看",
-                                "uri": data.eventlink
-                            }]
-                        },
-                        {
-                            "imageBackgroundColor": "#FFFFFF",
-                            "title": "xxxx",
-                            "text": "xxxxxxx",
-                            "defaultAction": {
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": "http://www.ntub.edu.tw"
-                            },
-                            "actions": [{
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": "http://www.ntub.edu.tw"
-                            }]
-                        },
-                        {
-                            "imageBackgroundColor": "#FFFFFF",
-                            "title": "xxxx",
-                            "text": "xxxxxxx",
-                            "defaultAction": {
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": "http://www.ntub.edu.tw"
-                            },
-                            "actions": [{
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": "http://www.ntub.edu.tw"
-                            }]
-                        }],
-                        "imageAspectRatio": "square",
-                        "imageSize": "cover"
+                            {
+                                "title": "飯類",
+                                "text": "請選擇飯類餐點",
+                                "actions": [{
+                                    "type": "message",
+                                    "label": "想吃蛋炒飯",
+                                    "text": "蛋炒飯"
+                                },
+                                {
+                                    "type": "message",
+                                    "label": "想吃燴飯",
+                                    "text": "燴飯"
+                                },
+                                {
+                                    "type": "message",
+                                    "label": "想吃海鮮炒飯",
+                                    "text": "海鮮炒飯"
+                                }]
+                            }],
+                            "imageAspectRatio": "rectangle",
+                            "imageSize": "cover"
+                        }
                     }
                 }
-                var payload = new Payload('LINE', lineMessage, {
-                    sendAsMessage: true
-                  });
-                  
-                  agent.add(payload);
             };
         })
         
