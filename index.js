@@ -111,12 +111,12 @@ app.post('/dialogflow', express.json(), (req, res) => {
                     "template": {
                         "type": "carousel",
                         "columns":[{
-                            "title": "xxxx",
+                            "title": data.eventname,
                             "text": "xxxxxxx",
                             "defaultAction": {
                                 "type": "uri",
                                 "label": "View detail",
-                                "uri": "http://www.ntub.edu.tw"
+                                "uri": data.eventlink
                             },
                             "actions": [{
                                 "type": "uri",
