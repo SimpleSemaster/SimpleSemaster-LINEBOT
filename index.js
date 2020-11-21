@@ -115,12 +115,12 @@ app.post('/dialogflow', express.json(), (req, res) => {
                             "defaultAction": {
                                 "type": "uri",
                                 "label": "點我查看",
-                                "uri": eventlink
+                                "uri": data.eventlink
                             },
                             "actions": [{
                                 "type": "uri",
                                 "label": "點我查看",
-                                "uri": eventlink
+                                "uri": data.eventlink
                             }]
                         },
                         {
