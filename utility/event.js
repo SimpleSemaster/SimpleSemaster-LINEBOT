@@ -13,8 +13,7 @@ var fetchEvent = async function(){
     await query('select * from event')
         .then((data) => {
             if(data.rows.length > 0){
-                result = data.rows;  //成績資料(清單)
-                console.log(data.rows);
+                result = data.rows.slice(-3);  //成績資料(清單)
             }else{
                 result = -1;  //找不到資料
             }    
