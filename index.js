@@ -84,13 +84,14 @@ app.post('/dialogflow', express.json(), (req, res) => {
     function SearchSemesterCredits() {
         var schoolsys = req.body.queryResult.parameters.schoolsys;
         var grade = req.body.queryResult.parameters.grade;
+
         return semcredits.fetchSemCredits(schoolsys,grade).then(data => {  
             if (data == -1){
                 agent.add('找不到學制資料');
             }else if(data == -9){                    
                 agent.add('執行錯誤');
             }else{
-                agent.add(schoolsys+grade+"年級的最低選課學分為："+ minsemcre + "\n最高選課學分為："+maxsemcre);
+                agent.add(data.schoolsys+data.grade+"年級的最低選課學分為："+ data.minsemcre + "\n最高選課學分為："+data.maxsemcre);
             };
         })
     }  
