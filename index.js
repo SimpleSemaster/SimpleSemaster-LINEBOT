@@ -122,7 +122,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
     intentMap.set('SearchCourse', SearchCourse);SearchCredits
     intentMap.set('SearchCredits', SearchCredits);
     intentMap.set('SearchSemesterCredits', SearchSemesterCredits);
-    intentMap.set('SearchEvents', SearchEvent);
+    intentMap.set('SearchEvents', SearchEvents);
     //------------------------------------
     agent.handleRequest(intentMap);         
 });
