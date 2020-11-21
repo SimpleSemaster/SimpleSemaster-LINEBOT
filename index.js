@@ -11,6 +11,7 @@ const teacher = require('./utility/teacher');
 const course = require('./utility/course');
 const credits = require('./utility/credits');
 const semcredits = require('./utility/semcredits');
+const event = require('./utility/event');
 
 
 //--------------------------------
@@ -95,6 +96,74 @@ app.post('/dialogflow', express.json(), (req, res) => {
             };
         })
     }  
+
+    function SearchEvent() {
+        return event.fetchEvent().then(data => {  
+            if (data == -1){
+                agent.add('找不到活動資料');
+            }else if(data == -9){                    
+                agent.add('執行錯誤');
+            }else{
+                const lineMessage = {
+                    "type": "template",
+                    "altText": "活動資訊",
+                    "template": {
+                        "type": "carousel",
+                        "columns":[{
+                            "imageBackgroundColor": "#FFFFFF",
+                            "title": data.eventname,
+                            "defaultAction": {
+                                "type": "uri",
+                                "label": "點我查看",
+                                "uri": eventlink
+                            },
+                            "actions": [{
+                                "type": "uri",
+                                "label": "點我查看",
+                                "uri": eventlink
+                            }]
+                        },
+                        {
+                            "imageBackgroundColor": "#FFFFFF",
+                            "title": "xxxx",
+                            "text": "xxxxxxx",
+                            "defaultAction": {
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://www.ntub.edu.tw"
+                            },
+                            "actions": [{
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://www.ntub.edu.tw"
+                            }]
+                        },
+                        {
+                            "imageBackgroundColor": "#FFFFFF",
+                            "title": "xxxx",
+                            "text": "xxxxxxx",
+                            "defaultAction": {
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://www.ntub.edu.tw"
+                            },
+                            "actions": [{
+                                "type": "uri",
+                                "label": "View detail",
+                                "uri": "http://www.ntub.edu.tw"
+                            }]
+                        }],
+                        "imageAspectRatio": "square",
+                        "imageSize": "cover"
+                    }
+                }
+                agent.add(lineMessage);
+            };
+        })
+        
+    }        
+
+    
     let intentMap = new Map();
     //------------------------------------
     intentMap.set('SearchTeacher', SearchTeacher)
@@ -102,6 +171,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
     intentMap.set('SearchCourse', SearchCourse);SearchCredits
     intentMap.set('SearchCredits', SearchCredits);
     intentMap.set('SearchSemesterCredits', SearchSemesterCredits);
+    intentMap.set('SearchEvent', SearchEvent);
     //------------------------------------
     agent.handleRequest(intentMap);         
 });
