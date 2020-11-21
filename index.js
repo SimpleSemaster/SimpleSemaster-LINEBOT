@@ -153,7 +153,11 @@ app.post('/dialogflow', express.json(), (req, res) => {
                         }
                     }
                 }
-                agent.add(lineMessage);
+                var payload = new Payload('LINE', lineMessage, {
+                    sendAsMessage: true
+                  });
+                  
+                  agent.add(payload);
             };
         })
         
