@@ -4,7 +4,6 @@
 var express = require('express');
 const { WebhookClient } = require('dialogflow-fulfillment');
 const app = express();
-const {Payload} = require('dialogflow-fulfillment');
 
 
 //增加引用函式
@@ -105,63 +104,8 @@ app.post('/dialogflow', express.json(), (req, res) => {
             }else if(data == -9){                    
                 agent.add('執行錯誤');
             }else{
-                const lineMessage = {
-                    "type": "template",
-                    "altText": "this is a carousel template",
-                    "template": {
-                        "type": "carousel",
-                        "columns":[{
-                            "title": '',
-                            "text": "xxxxxxx",
-                            "defaultAction": {
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": data.eventlink
-                            },
-                            "actions": [{
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": "http://www.ntub.edu.tw"
-                            }]
-                        },
-                        {
-                            "title": "xxxx",
-                            "text": "xxxxxxx",
-                            "defaultAction": {
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": "http://www.ntub.edu.tw"
-                            },
-                            "actions": [{
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": "http://www.ntub.edu.tw"
-                            }]
-                        },
-                        {
-                            "title": "xxxx",
-                            "text": "xxxxxxx",
-                            "defaultAction": {
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": "http://www.ntub.edu.tw"
-                            },
-                            "actions": [{
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": "http://www.ntub.edu.tw"
-                            }]
-                        }],
-                        "imageAspectRatio": "square",
-                        "imageSize": "cover"
-                    }
-                }
-                var payload = new Payload('LINE', lineMessage, {
-                    sendAsMessage: true
-                  });
-                  
-                  agent.add(payload);
-            };
+                agent.add("活動名稱："+eventname+"\n活動網址："+eventlink);
+            }
         })
         
     }        
