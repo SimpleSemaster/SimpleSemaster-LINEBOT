@@ -4,6 +4,7 @@
 var express = require('express');
 const { WebhookClient } = require('dialogflow-fulfillment');
 const app = express();
+const {Payload} = require('dialogflow-fulfillment');
 
 
 //增加引用函式
