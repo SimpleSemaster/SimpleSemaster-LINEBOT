@@ -98,7 +98,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
     }  
 
     function SearchEvents() {
-        return events.fetchEvent().then(data => {  
+        return events.fetchEvents().then(data => {  
             if (data == -1){
                 agent.add('找不到活動資料');
             }else if(data == -9){                    
